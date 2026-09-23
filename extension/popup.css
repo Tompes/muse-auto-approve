@@ -1,0 +1,509 @@
+/*
+** Popup styles. Colors come from the custom properties in :root, derived
+** from the logo's cyan-to-blue gradient; the dark scheme overrides only
+** those. Amber and red are kept for risk and failure, never for branding.
+*/
+
+/* Theme */
+
+:root {
+  color-scheme: light dark;
+  /* The logo's gradient, top left to bottom right. */
+  --brand-start: #01b0fc;
+  --brand-end: #004dfd;
+  --brand: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  --bg: #f3f6fb;
+  --card: #fff;
+  --text: #0f1b2d;
+  --muted: #5a6a80;
+  --line: #e1e8f2;
+  /* Brand blue darkened for 4.5:1 text contrast on --card and --accent-soft. */
+  --accent: #0a5ae6;
+  --accent-soft: #e8f1ff;
+  --warn: #a1620a;
+  --warn-soft: #fdf3e1;
+  --bad: #c0362c;
+  --idle: #a5b1c2;
+  --shadow: 0 1px 2px rgba(10, 40, 100, 0.06), 0 2px 8px rgba(10, 40, 100, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1220;
+    --card: #161d2b;
+    --text: #e6edf7;
+    --muted: #94a3b8;
+    --line: #263145;
+    --accent: #4ea3ff;
+    --accent-soft: #10243f;
+    --warn: #e0a346;
+    --warn-soft: #352a17;
+    --bad: #ef6d64;
+    --idle: #4a5670;
+    --shadow: none;
+  }
+}
+
+/* Page */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 340px;
+  padding: 16px;
+  font: 13px/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Header */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  flex: none;
+}
+
+.heading {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+h1 {
+  font-size: 14.5px;
+  margin: 0;
+  flex: 1;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  /* Both shipped names fit; a longer translation must not run under the language menu. */
+  text-overflow: ellipsis;
+}
+
+.heading h1 {
+  flex: none;
+  line-height: 1.2;
+}
+
+.pill {
+  font-size: 10.5px;
+  line-height: 1.4;
+  padding: 1px 8px;
+  border-radius: 99px;
+  background: var(--line);
+  color: var(--muted);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.pill.on {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.lang {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: none;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.lang span {
+  position: absolute;
+  left: 6px;
+  pointer-events: none;
+  font-size: 11px;
+}
+
+.lang select {
+  appearance: none;
+  font: inherit;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 3px 18px 3px 21px;
+  cursor: pointer;
+  max-width: 110px;
+}
+
+.lang::after {
+  content: "";
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin-top: -4px;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.lang select:hover {
+  color: var(--text);
+  border-color: var(--idle);
+}
+
+.lang select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Cards and the switch */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.toggle-row .text {
+  flex: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.switch {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex: none;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.track {
+  position: absolute;
+  inset: 0;
+  border-radius: 99px;
+  background: var(--idle);
+  transition: background 0.2s;
+}
+
+.track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s;
+}
+
+.switch input:checked + .track {
+  background: var(--brand);
+}
+
+.switch input:checked + .track::after {
+  transform: translateX(18px);
+}
+
+.switch input:focus-visible + .track {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Scope */
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 0 0 8px;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+}
+
+.option {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.option:hover {
+  border-color: var(--idle);
+}
+
+.option input {
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+}
+
+.option:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.option.risky:has(input:checked) {
+  border-color: var(--warn);
+  background: var(--warn-soft);
+}
+
+.option.risky input {
+  accent-color: var(--warn);
+}
+
+.warning {
+  display: none;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-size: 12px;
+}
+
+.warning.show {
+  display: block;
+}
+
+/* Status */
+
+.status {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--idle);
+  margin-top: 6px;
+  flex: none;
+}
+
+.dot.ok {
+  background: var(--brand);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.dot.warn {
+  background: var(--warn);
+  box-shadow: 0 0 0 3px var(--warn-soft);
+}
+
+.dot.bad {
+  background: var(--bad);
+}
+
+.status .body {
+  flex: 1;
+  min-width: 0;
+}
+
+.status-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#status-time {
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+#status-detail {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  margin-top: 2px;
+}
+
+#heartbeat {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+}
+
+#heartbeat:empty {
+  display: none;
+}
+
+#heartbeat.stale {
+  color: var(--warn);
+}
+
+button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Notes */
+
+details {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 0 4px;
+}
+
+summary {
+  cursor: pointer;
+  padding: 4px 0;
+  user-select: none;
+}
+
+details ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+details li {
+  margin: 3px 0;
+}
+
+/* Risk confirmation */
+
+/* Anchored to the body's 16px padding rather than centered in the viewport,
+   which can be wider than the 340px popup body. */
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 16px;
+  width: 308px;
+  margin: 0;
+  transform: translateY(-50%);
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 8px 32px rgba(10, 30, 70, 0.25);
+}
+
+dialog::backdrop {
+  background: rgba(10, 20, 40, 0.45);
+}
+
+dialog h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+dialog p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.confirm-scope {
+  display: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--warn-soft);
+}
+
+dialog .confirm-scope {
+  color: var(--warn);
+}
+
+.confirm-scope.show {
+  display: block;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.actions button {
+  flex: 1;
+  margin-top: 0;
+}
+
+button.danger {
+  border-color: var(--warn);
+  background: var(--warn);
+  color: var(--card);
+}
+
+button.danger:hover:not(:disabled) {
+  border-color: var(--warn);
+  color: var(--card);
+  filter: brightness(1.08);
+}

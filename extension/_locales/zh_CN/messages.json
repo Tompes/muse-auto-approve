@@ -1,0 +1,204 @@
+{
+  "extName": {
+    "message": "Muse 自动审批"
+  },
+  "extDescription": {
+    "message": "通过已登录 Muse 页面的 RPC 连接静默处理审批请求。"
+  },
+  "statusOn": {
+    "message": "运行中"
+  },
+  "statusOff": {
+    "message": "已关闭"
+  },
+  "toggleTitle": {
+    "message": "自动处理审批"
+  },
+  "toggleHint": {
+    "message": "通过页面 RPC 静默批准，只能手动关闭"
+  },
+  "scopeLabel": {
+    "message": "处理范围"
+  },
+  "scopeNetworkTitle": {
+    "message": "仅网络连接"
+  },
+  "scopeNetworkHint": {
+    "message": "只处理访问网站或域名的请求"
+  },
+  "scopeAllTitle": {
+    "message": "所有支持的类型"
+  },
+  "scopeAllHint": {
+    "message": "包括连接器、设备、浏览器操作、发送媒体和结账"
+  },
+  "scopeAllWarning": {
+    "message": "⚠ 此范围会自动批准结账、发送内容和设备操作，并优先授予长期权限。除网络请求外，其他类型尚未实测。"
+  },
+  "statusNone": {
+    "message": "尚无记录"
+  },
+  "statusNoneHint": {
+    "message": "打开开关或点下方按钮检测连接。"
+  },
+  "probeButton": {
+    "message": "检测连接（只读）"
+  },
+  "probing": {
+    "message": "检测中…"
+  },
+  "probingHint": {
+    "message": "正在通过已打开的 Muse 标签页查询待审批列表。"
+  },
+  "probeFailed": {
+    "message": "检测失败"
+  },
+  "probeNoWorker": {
+    "message": "无法连接扩展后台，请重新加载扩展。"
+  },
+  "notesTitle": {
+    "message": "使用须知"
+  },
+  "note1": {
+    "message": "保持 Muse 已登录，并保留一个会话标签页，无需打开 Approvals 面板。"
+  },
+  "note2": {
+    "message": "优先使用服务端提供的长期允许，否则仅允许一次。"
+  },
+  "note3": {
+    "message": "关闭页面、电脑休眠或登录失效时不会工作。"
+  },
+  "note4": {
+    "message": "已授予的长期权限需要在 Muse 中撤销。"
+  },
+  "kind_approved": {
+    "message": "已批准"
+  },
+  "kind_connected": {
+    "message": "已连接"
+  },
+  "kind_retrying": {
+    "message": "稍后重试"
+  },
+  "kind_waiting": {
+    "message": "等待连接"
+  },
+  "kind_stopped": {
+    "message": "已停止"
+  },
+  "reason_push": {
+    "message": "实时推送"
+  },
+  "reason_poll": {
+    "message": "页面定时"
+  },
+  "reason_alarm": {
+    "message": "后台兜底"
+  },
+  "heartbeatOk": {
+    "message": "最近自动检查 $1 · $2"
+  },
+  "heartbeatStale": {
+    "message": "⚠ 超过 1 分钟没有自动检查（上次 $1）。请刷新 Muse 页面。"
+  },
+  "connectedDetail": {
+    "message": "静默 RPC 已连接 · $1 个待审批 · $2 个符合范围"
+  },
+  "decision_allow_always": {
+    "message": "长期允许"
+  },
+  "decision_allow_once": {
+    "message": "允许一次"
+  },
+  "type_network": {
+    "message": "网络连接"
+  },
+  "type_connector": {
+    "message": "连接器"
+  },
+  "type_device": {
+    "message": "设备"
+  },
+  "type_browser_action": {
+    "message": "浏览器操作"
+  },
+  "type_browser_task_confirmation": {
+    "message": "浏览器任务确认"
+  },
+  "type_outgoing_media": {
+    "message": "发送媒体"
+  },
+  "type_browser_checkout": {
+    "message": "浏览器结账"
+  },
+  "type_stripe_link_checkout": {
+    "message": "Stripe 结账"
+  },
+  "type_shopify_checkout": {
+    "message": "Shopify 结账"
+  },
+  "code_rpc_unavailable_or_ambiguous": {
+    "message": "未找到唯一的已连接会话；请打开已登录的 Muse 聊天页面。"
+  },
+  "code_rpc_failed": {
+    "message": "RPC 调用失败；该请求 60 秒后重试。"
+  },
+  "code_approval_not_confirmed": {
+    "message": "服务端未确认批准；该请求 60 秒后重试。"
+  },
+  "code_gateway_changed": {
+    "message": "会话连接已切换；该请求 60 秒后重试。"
+  },
+  "code_authorization_expired": {
+    "message": "页面响应过慢；该请求 60 秒后重试。"
+  },
+  "code_unsupported_decision": {
+    "message": "请求已变化或过期；60 秒后重新检查。"
+  },
+  "code_interrupted": {
+    "message": "页面或扩展连接中断；稍后自动重试。"
+  },
+  "code_tab_reloading": {
+    "message": "Muse 标签页已被 Chrome 释放内存，正在重新加载。"
+  },
+  "code_busy": {
+    "message": "正在处理其他请求，请稍后再试。"
+  },
+  "code_wrong_origin": {
+    "message": "当前标签页不是 Muse。"
+  },
+  "code_no_result": {
+    "message": "页面没有返回结果，请刷新 Muse 页面。"
+  },
+  "code_no_muse_tab": {
+    "message": "没有打开的 Muse 标签页；请打开一个已登录的会话。"
+  },
+  "localeCode": {
+    "message": "zh_CN",
+    "description": "Internal: identifies which catalog Chrome selected. Must equal the directory name."
+  },
+  "languageName": {
+    "message": "简体中文"
+  },
+  "languageAuto": {
+    "message": "自动"
+  },
+  "languageLabel": {
+    "message": "语言"
+  },
+  "confirmTitle": {
+    "message": "风险自负"
+  },
+  "confirmBody": {
+    "message": "本扩展与 Muse 官方无关。开启后，它会在不询问你的情况下替你批准请求，包括关闭扩展后仍然有效的长期权限。它依赖 Muse 未公开的协议，可能随时变化或失效；自动审批也可能违反 Muse 的服务条款。"
+  },
+  "confirmAllScope": {
+    "message": "⚠ 当前范围还会批准结账、发送内容和设备操作。"
+  },
+  "confirmCancel": {
+    "message": "取消"
+  },
+  "confirmAccept": {
+    "message": "我已了解，开启"
+  }
+}

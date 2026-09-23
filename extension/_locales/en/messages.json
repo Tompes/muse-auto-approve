@@ -1,0 +1,204 @@
+{
+  "extName": {
+    "message": "Auto Approve for Muse"
+  },
+  "extDescription": {
+    "message": "Silently approves Muse approval requests through the signed-in page's RPC connection."
+  },
+  "statusOn": {
+    "message": "Running"
+  },
+  "statusOff": {
+    "message": "Off"
+  },
+  "toggleTitle": {
+    "message": "Auto-approve"
+  },
+  "toggleHint": {
+    "message": "Approves silently via the page RPC. Only you can turn it off."
+  },
+  "scopeLabel": {
+    "message": "Scope"
+  },
+  "scopeNetworkTitle": {
+    "message": "Network connections only"
+  },
+  "scopeNetworkHint": {
+    "message": "Only requests to access websites or domains"
+  },
+  "scopeAllTitle": {
+    "message": "All supported types"
+  },
+  "scopeAllHint": {
+    "message": "Includes connectors, devices, browser actions, outgoing media and checkout"
+  },
+  "scopeAllWarning": {
+    "message": "⚠ This scope auto-approves checkout, outgoing content and device actions, and prefers long-term grants. Types other than network are untested."
+  },
+  "statusNone": {
+    "message": "No activity yet"
+  },
+  "statusNoneHint": {
+    "message": "Turn on the switch or check the connection below."
+  },
+  "probeButton": {
+    "message": "Check connection (read-only)"
+  },
+  "probing": {
+    "message": "Checking…"
+  },
+  "probingHint": {
+    "message": "Querying pending approvals in an open Muse tab."
+  },
+  "probeFailed": {
+    "message": "Check failed"
+  },
+  "probeNoWorker": {
+    "message": "Cannot reach the extension background. Reload the extension."
+  },
+  "notesTitle": {
+    "message": "Notes"
+  },
+  "note1": {
+    "message": "Stay signed in to Muse and keep a conversation tab open. The Approvals panel does not need to be open."
+  },
+  "note2": {
+    "message": "Uses the long-term grant offered by the server when available; otherwise allows once."
+  },
+  "note3": {
+    "message": "Stops working when the page is closed, the computer sleeps, or the sign-in expires."
+  },
+  "note4": {
+    "message": "Long-term grants must be revoked in Muse."
+  },
+  "kind_approved": {
+    "message": "Approved"
+  },
+  "kind_connected": {
+    "message": "Connected"
+  },
+  "kind_retrying": {
+    "message": "Retrying later"
+  },
+  "kind_waiting": {
+    "message": "Waiting for connection"
+  },
+  "kind_stopped": {
+    "message": "Stopped"
+  },
+  "reason_push": {
+    "message": "live push"
+  },
+  "reason_poll": {
+    "message": "page timer"
+  },
+  "reason_alarm": {
+    "message": "background scan"
+  },
+  "heartbeatOk": {
+    "message": "Last automatic check $1 · $2"
+  },
+  "heartbeatStale": {
+    "message": "⚠ No automatic check for over a minute (last at $1). Reload the Muse page."
+  },
+  "connectedDetail": {
+    "message": "Silent RPC connected · $1 pending · $2 in scope"
+  },
+  "decision_allow_always": {
+    "message": "Always allow"
+  },
+  "decision_allow_once": {
+    "message": "Allow once"
+  },
+  "type_network": {
+    "message": "Network connection"
+  },
+  "type_connector": {
+    "message": "Connector"
+  },
+  "type_device": {
+    "message": "Device"
+  },
+  "type_browser_action": {
+    "message": "Browser action"
+  },
+  "type_browser_task_confirmation": {
+    "message": "Browser task confirmation"
+  },
+  "type_outgoing_media": {
+    "message": "Outgoing media"
+  },
+  "type_browser_checkout": {
+    "message": "Browser checkout"
+  },
+  "type_stripe_link_checkout": {
+    "message": "Stripe checkout"
+  },
+  "type_shopify_checkout": {
+    "message": "Shopify checkout"
+  },
+  "code_rpc_unavailable_or_ambiguous": {
+    "message": "No single connected Muse session found. Open a signed-in conversation."
+  },
+  "code_rpc_failed": {
+    "message": "RPC call failed. This request will be retried in 60 seconds."
+  },
+  "code_approval_not_confirmed": {
+    "message": "The server did not confirm the approval. Retrying in 60 seconds."
+  },
+  "code_gateway_changed": {
+    "message": "The session connection changed. Retrying in 60 seconds."
+  },
+  "code_authorization_expired": {
+    "message": "The page responded too slowly. Retrying in 60 seconds."
+  },
+  "code_unsupported_decision": {
+    "message": "The request changed or expired. Checking again in 60 seconds."
+  },
+  "code_interrupted": {
+    "message": "The page or extension connection was interrupted. Retrying shortly."
+  },
+  "code_tab_reloading": {
+    "message": "Chrome unloaded the Muse tab to save memory. Reloading it."
+  },
+  "code_busy": {
+    "message": "Another run is in progress. Try again shortly."
+  },
+  "code_wrong_origin": {
+    "message": "The tab is not a Muse page."
+  },
+  "code_no_result": {
+    "message": "The page returned no result. Reload the Muse page."
+  },
+  "code_no_muse_tab": {
+    "message": "No Muse tab is open. Open a signed-in conversation."
+  },
+  "localeCode": {
+    "message": "en",
+    "description": "Internal: identifies which catalog Chrome selected. Must equal the directory name."
+  },
+  "languageName": {
+    "message": "English"
+  },
+  "languageAuto": {
+    "message": "Auto"
+  },
+  "languageLabel": {
+    "message": "Language"
+  },
+  "confirmTitle": {
+    "message": "Run at your own risk"
+  },
+  "confirmBody": {
+    "message": "This extension is not affiliated with Muse. Once on, it approves requests on your behalf without asking, including long-term grants that stay in effect after you turn it off. It relies on Muse's private protocol, which can change or break at any time, and automating approvals may be against Muse's terms."
+  },
+  "confirmAllScope": {
+    "message": "⚠ The selected scope also approves checkout, outgoing content and device actions."
+  },
+  "confirmCancel": {
+    "message": "Cancel"
+  },
+  "confirmAccept": {
+    "message": "Accept & turn on"
+  }
+}

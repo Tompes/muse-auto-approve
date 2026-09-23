@@ -1,0 +1,12 @@
+node_modules/
+coverage/
+dist/
+*.pem
+*.crx
+!tests/fixtures/*.crx
+*.lcov
+*.har
+.env*
+.DS_Store
+.claude/
+.kilo/

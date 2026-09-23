@@ -1,0 +1,16 @@
+{
+  "name": "muse-auto-approve",
+  "version": "0.3.0",
+  "description": "Chrome extension that silently approves Muse approval requests through the signed-in page's RPC connection.",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=22.8"
+  },
+  "scripts": {
+    "test": "node --test --test-timeout=10000 --experimental-test-coverage --test-coverage-include='extension/lib/**' --test-coverage-include=extension/content.js --test-coverage-include='scripts/lib/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 'tests/*.test.mjs'",
+    "check": "node scripts/check.mjs",
+    "verify": "npm run check && npm test",
+    "package": "node scripts/package.mjs"
+  }
+}

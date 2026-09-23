@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <img class="logo" src="icons/icon-128.png" alt="">
+  <div class="heading">
+    <h1 data-i18n="extName"></h1>
+    <span class="pill" id="pill"></span>
+  </div>
+  <label class="lang"><span aria-hidden="true">🌐</span><select id="language"></select></label>
+</header>
+
+<section class="card">
+  <label class="toggle-row">
+    <span class="text">
+      <div class="title" data-i18n="toggleTitle"></div>
+      <div class="sub" data-i18n="toggleHint"></div>
+    </span>
+    <span class="switch"><input type="checkbox" id="enabled" role="switch"><span class="track"></span></span>
+  </label>
+</section>
+
+<section class="card">
+  <p class="label" data-i18n="scopeLabel"></p>
+  <div class="options">
+    <label class="option">
+      <input type="radio" name="scope" value="network">
+      <span>
+        <div class="title" data-i18n="scopeNetworkTitle"></div>
+        <div class="sub" data-i18n="scopeNetworkHint"></div>
+      </span>
+    </label>
+    <label class="option risky">
+      <input type="radio" name="scope" value="all">
+      <span>
+        <div class="title" data-i18n="scopeAllTitle"></div>
+        <div class="sub" data-i18n="scopeAllHint"></div>
+      </span>
+    </label>
+  </div>
+  <div class="warning" id="warning" data-i18n="scopeAllWarning"></div>
+</section>
+
+<section class="card">
+  <div class="status">
+    <span class="dot" id="dot"></span>
+    <div class="body">
+      <div class="status-head">
+        <span class="title" id="status-title" data-i18n="statusNone"></span>
+        <span id="status-time"></span>
+      </div>
+      <div id="status-detail" data-i18n="statusNoneHint"></div>
+    </div>
+  </div>
+  <div id="heartbeat"></div>
+  <button id="probe" data-i18n="probeButton"></button>
+</section>
+
+<details>
+  <summary data-i18n="notesTitle"></summary>
+  <ul>
+    <li data-i18n="note1"></li>
+    <li data-i18n="note2"></li>
+    <li data-i18n="note3"></li>
+    <li data-i18n="note4"></li>
+  </ul>
+</details>
+<dialog id="confirm" aria-labelledby="confirm-title">
+  <h2 id="confirm-title" data-i18n="confirmTitle"></h2>
+  <p data-i18n="confirmBody"></p>
+  <p class="confirm-scope" id="confirm-scope" data-i18n="confirmAllScope"></p>
+  <div class="actions">
+    <button id="confirm-cancel" data-i18n="confirmCancel"></button>
+    <button class="danger" id="confirm-accept" data-i18n="confirmAccept"></button>
+  </div>
+</dialog>
+<script type="module" src="popup.mjs"></script>
+</body>
+</html>

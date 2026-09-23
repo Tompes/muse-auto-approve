@@ -1,0 +1,52 @@
+name: Release
+
+# Push a tag such as v0.3.0 whose version matches manifest.json and package.json.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm run check
+      - run: npm test
+      - name: Require the signing key
+        env:
+          CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
+        run: |
+          if [ -z "$CRX_PRIVATE_KEY" ]; then
+            echo "::error::Set the CRX_PRIVATE_KEY secret. A release without it would change the extension ID."
+            exit 1
+          fi
+      - name: Build ZIP and signed CRX
+        env:
+          CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
+        run: node scripts/package.mjs --expect-version "${GITHUB_REF_NAME#v}" | tee dist/build.txt
+      - name: Checksums
+        working-directory: dist
+        run: sha256sum *.zip *.crx > SHA256SUMS
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          id=$(sed -n 's/^extension ID: //p' dist/build.txt)
+          notes=$(awk -v v="${GITHUB_REF_NAME#v}" '
+            $0 ~ "^## \\[" v "\\]" { on = 1; next }
+            on && /^## \[/ { exit }
+            on { print }' CHANGELOG.md)
+          printf '%s\n\nExtension ID: `%s`\n' "$notes" "$id" > dist/notes.md
+          gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file dist/notes.md \
+            dist/*.zip dist/*.crx dist/SHA256SUMS
